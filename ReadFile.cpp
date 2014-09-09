@@ -1,42 +1,42 @@
 #include "ReadFile.h"
 #include <iostream>
+/*Fall 2014
+  Dillon Strunk*/
 #include <string>
 
 ReadFile::ReadFile(const char* fn)
 {
-   file_name = fn;
-
-   rf->input_file.open(fn);
-   rf->closed = false;
-   rf->_eof = false;
+   input_file.open(fn);
+   closed = false;
+   _eof = false;
 }
 
 ReadFile::~ReadFile()
 {
-   delete rf;
+  
 }
 
-bool ReadFile::eof(ReadFile* rf)
+bool ReadFile::eof()
 {
-   return rf->_eof;
+   return _eof;
 }
 
 void ReadFile::close()
 {
-   if (!rf->closed)
+   if (!closed)
    {
-      rf->input_file.close();
-      rf->closed = true;
+      input_file.close();
+      closed = true;
    }
 }
 
-String* ReadFile::readLine(ReadFile* rf)
+String* ReadFile::readLine()
 {
-   if (rf->closed) return NULL;
-   if (rf->_eof) return NULL;
+   if (closed) return NULL;
+   if (_eof) return NULL;
 
    string text;
-   rf->_eof = !(getline(rf->input_file, text));
+   _eof = !(getline(input_file, text));
 
    String* str = new String((const char*) text.c_str());
    return str;

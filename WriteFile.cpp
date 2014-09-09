@@ -1,32 +1,32 @@
+/*Fall 2014
+  Dillon Strunk*/
 #include "WriteFile.h"
 #include <sstream>
 
 WriteFile::WriteFile(const char* fn)
 {
-   file_name = fn;
-   
-   wf->output_file.open(fn);
-   wf->closed = false;
+   output_file.open(fn);
+   closed = false;
 }
 
 WriteFile::~WriteFile()
 {
-   delete wf;
+
 }
 
 void WriteFile::close()
 {
-   if (!wf->closed)
+   if (!closed)
    {
-      wf->output_file.close();
-      wf->closed = true;
+      output_file.close();
+      closed = true;
    }
 }
 
-void WriteFile::writeLine(WriteFile* wf, String* line)
+void WriteFile::writeLine(String* line)
 {
-   if (!wf->closed && line->length() > 0)
+   if (!closed && line->length() > 0)
    {
-      wf->output_file << line->getText() << endl;
+      output_file << line->getText() << endl;
    }
 }

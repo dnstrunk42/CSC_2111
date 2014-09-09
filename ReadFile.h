@@ -1,3 +1,5 @@
+/*Fall 2014
+  Dillon Strunk*/
 #if !defined READ_FILE
 #define READ_FILE
 
@@ -9,11 +11,9 @@ using namespace std;
 class ReadFile
 {
    private:
-   const char* file_name;
    ifstream input_file;
    bool _eof;
    bool closed;
-   ReadFile* rf;
    
    public:
    //constructor
@@ -21,8 +21,8 @@ class ReadFile
    //destructor
    ~ReadFile();
    
-   String* readLine(ReadFile* rf);
-   bool eof(ReadFile* rf);
+   String* readLine();
+   bool eof();
    void close();
 };
 
